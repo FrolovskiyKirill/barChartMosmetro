@@ -17,20 +17,25 @@ number_of_crush = [217, 276, 335, 259, 268, 397, 327, 273, 201, 204, 179, 230]
 def line_graf(x, y):
     fig = go.Figure()
 
-    fig.add_layout_image(
-        dict(
-            source="https://gorod-plus.tv/media/photos2/all/105977_875x438_q75.jpg",
-            xref="x",
-            yref="y",
-            x=0,
-            y=0,
-            opacity=0.9,
-            layer="above")
-    )
-
-    fig.add_trace(go.Scatter(x=x, y=y, name="linear",
+    fig.add_trace(go.Scatter(x=x, y=y,
+                             mode="lines+markers+text",
+                             name="Lines, Markers and Text",
+                             text=number_of_crush,
+                             textposition='bottom center',
+                             textfont=dict(
+                                 family='arial',
+                                 size=20,
+                                 color='Black'
+                             ),
                              line_shape='spline',
-                             opacity=1))
+                             opacity=1)
+                  )
+    
+
+    fig.add_annotation(x=10, y=0.1,
+                        text="",
+                        showarrow=False)
+
 
     fig.update_layout(title='ОБЩЕЕ ЧИСЛО НАРУШЕНИЙ РАБОТЫ ТРАМВАЕВ',
                       title_x=0.5,
@@ -51,7 +56,7 @@ def line_graf(x, y):
 
     # update layout properties
     fig.update_layout(
-        autosize=False,
+        autosize=True,
         height=500,
         width=1200,
         bargap=0.15,
