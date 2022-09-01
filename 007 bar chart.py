@@ -21,21 +21,22 @@ def line_graf(x, y):
                              mode="lines+markers+text",
                              name="Lines, Markers and Text",
                              text=number_of_crush,
-                             textposition='bottom center',
+                             marker_size=35,
+                             marker_line_width=2,
+                             marker_color='rgba(255, 182, 193, .9)',
+                             textposition='middle center',
                              textfont=dict(
                                  family='arial',
-                                 size=20,
+                                 size=16,
                                  color='Black'
                              ),
                              line_shape='spline',
                              opacity=1)
                   )
-    
 
     fig.add_annotation(x=10, y=0.1,
                         text="",
                         showarrow=False)
-
 
     fig.update_layout(title='ОБЩЕЕ ЧИСЛО НАРУШЕНИЙ РАБОТЫ ТРАМВАЕВ',
                       title_x=0.5,

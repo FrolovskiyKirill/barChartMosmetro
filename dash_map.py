@@ -22,12 +22,9 @@ app.layout = dbc.Container([
         dbc.Col([mytitle], width=6)
     ], justify='center'),
     dbc.Row([
-        dbc.Col([mygraph], width=12)
+        dbc.Col([mygraph], width=8),
+        dbc.Col([dropdown], width=4)
     ]),
-    dbc.Row([
-        dbc.Col([dropdown], width=6)
-    ], justify='center'),
-
 ], fluid=True)
 
 # Callback allows components to interact
@@ -41,13 +38,7 @@ def update_graph(column_name):  # function arguments come from the component pro
     print(column_name)
     print(type(column_name))
     # https://plotly.com/python/choropleth-maps/
-    fig = px.choropleth(data_frame=df,
-                        locations='STATE',
-                        locationmode="USA-states",
-                        scope="usa",
-                        height=600,
-                        color=column_name,
-                        animation_frame='YEAR')
+    fig = px.line(data_frame=df, x='YEAR', y=column_name, color='STATE')
 
     return fig, '# '+column_name  # returned objects are assigned to the component property of the Output
 
